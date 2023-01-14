@@ -1,0 +1,23 @@
+{
+    "name": "caius/boat-trip",
+    "description": "Demo project for Let's Book",
+    "authors": [
+        {
+            "name": "Caius Ehmke",
+            "email": "cehmke91@gmail.com"
+        }
+    ],
+
+    "scripts": {
+        "test": "./vendor/bin/phpunit tests --testdox"
+    },
+
+    "autoload": {
+        "classmap": ["src/"],
+        "psr-4": { "BoatTrip\\": "src/" }
+    },
+    
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    }
+}
