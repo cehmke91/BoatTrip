@@ -21,3 +21,11 @@ If the other approach were to be taken the following changes would need to be ma
 
 Some other possible extensions to this implementation:
 GPSCoordinate could include a timestamp. This would allow us to log the speed of the boat at certain points. This information could be used to see where boats tend to stand still or where they tend to never stop. Depending on the type of activity/boat it could then mean there are frequent jams at a location, or in reverse that there is nothing of interest and people simply move past.
+
+In terms of persistence.
+While it is out of scope, I included a base Entity class which acknowledges it. The persistence layer should itself be responsible for storing and retrieving the entities.
+Rather than the entities having a save method on them which invokes the persistence layer (which could then be passed through using dependency injection to keep the implementation agnostic). 
+Another thing to consider in the persistence layer is converting the GPS coordinates to integers to avoid floating point errors. 
+Strings would also be possible but because the valid values including 5 bits of precision can be safely converted to integers without overflow issues.
+I'd argue that that is better since the multiplication or division after the fact is much safer than string conversion.
+
