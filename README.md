@@ -21,3 +21,5 @@ If the other approach were to be taken the following changes would need to be ma
 
 Some other possible extensions to this implementation:
 GPSCoordinate could include a timestamp. This would allow us to log the speed of the boat at certain points. This information could be used to see where boats tend to stand still or where they tend to never stop. Depending on the type of activity/boat it could then mean there are frequent jams at a location, or in reverse that there is nothing of interest and people simply move past.
+Correctly linking the coordinates to the Trip would then also be done in the persistence layer when storing data, upon retrieval they can be added to 
+the Trip using the logCoordinates. Depending on the actual ORM used the entities may have other structures associated with them, I tried to keep it agnostic in this way, although in practice it is often more beneficial to have the entity be more usable from the perspective of the ORM.
