@@ -9,10 +9,13 @@ use BoatTrip\Exceptions\InvalidCoordinateException;
  */
 class GPSCoordinate extends Entity
 {
+    public readonly int $tripId;
+    
     public readonly float $latitude;
     public readonly float $longitude;
 
     public function __construct(
+        int $tripId,
         float $latitude,
         float $longitude,
     ) {
@@ -23,6 +26,9 @@ class GPSCoordinate extends Entity
             throw new InvalidCoordinateException("Invalid longitude measurement. Must range from -180 to 180");
 
         parent::__construct();
+        
+        // link to the containing trip
+        $this->tripId = $triipId;
 
         // round to 5 decimal spaces to set the precision to 1.11m
         $this->latitude = round($latitude, 5);
